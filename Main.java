@@ -1,0 +1,40 @@
+import controladores.MemoryController;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        MemoryController c = new MemoryController();
+        Scanner sc = new Scanner(System.in);
+
+       while (true) {
+            System.out.println(" == Catálogo de libros == ");
+            String[] menuopciones = {
+                    "(Test) Añadir 3 libros",
+                    "Añadir un nuevo libro.",
+                    "Ver lista de todos los libros.",
+                    "Buscar un libro por ISBN.",
+                    "Guardar y salir."};
+            for (int i = 0; i < menuopciones.length; i++) {
+                System.out.println(i + 1 + ". " + menuopciones[i]);
+            }
+            System.out.print(" > Seleccione una opción: ");
+            int opcion = sc.nextInt();
+
+            if (opcion >= menuopciones.length) { System.out.print("Saliendo del catálogo.."); break; }
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Añadiste tres libros automáticamente..");
+                    c.anadirLibroTest();
+                    break;
+                case 3:
+                    c.mostrarLibros();
+                    break;
+                case 4:
+                    c.buscarLibro("1f51081805");
+                    break;
+            }
+        }
+    }
+}
