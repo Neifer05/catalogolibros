@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class MemoryController {
     private int id = 0;
-    private Map<String, Libro>listaLibros = new HashMap<>();
+    private final Map<String, Libro>listaLibros = new HashMap<>();
 
     public void anadirLibroTest () {
         Libro l = new Libro(1, "151081805", "Libro1", 10.00F, "Neifer", 1900);
@@ -20,8 +20,8 @@ public class MemoryController {
     }
 
     public void anadirLibro (String isbn, String titulo, float precio, String autor, int anopublicacion) {
-        this.id++;
-        Libro l = new Libro(this.id, isbn, titulo, precio, autor, anopublicacion);
+        id++;
+        Libro l = new Libro(id, isbn, titulo, precio, autor, anopublicacion);
         listaLibros.put(l.getIsbn(), l);
     }
 

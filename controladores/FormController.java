@@ -3,9 +3,7 @@ package controladores;
 import java.util.Scanner;
 
 public class FormController {
-    MemoryController c = new MemoryController();
-
-    public void formularioAnadirLibro (Scanner sc) {
+    public void formularioAnadirLibro (MemoryController c, Scanner sc) {
         System.out.println("ISBN del libro: ");
         String isbn = sc.nextLine();
 

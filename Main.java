@@ -29,7 +29,7 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    fc.formularioAnadirLibro(sc);
+                    fc.formularioAnadirLibro(c, sc);
                     break;
                 case 2:
                     System.out.println("Añadiste tres libros automáticamente..");
