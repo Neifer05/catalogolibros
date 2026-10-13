@@ -1,3 +1,4 @@
+import controladores.FileController;
 import controladores.FormController;
 import controladores.MemoryController;
 
@@ -8,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         MemoryController c = new MemoryController();
         FormController fc = new FormController();
+        FileController flc = new FileController("data");
         Scanner sc = new Scanner(System.in);
         sc.useLocale(Locale.ENGLISH);
 
