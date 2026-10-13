@@ -37,12 +37,12 @@ public class Main {
                     c.mostrarLibros();
                     break;
                 case 3:
-                    System.out.println(" > Inserte un ISBN para buscar: ");
+                    System.out.print(" > Inserte un ISBN para buscar: ");
                     String isbnLibroBuscar = sc.nextLine();
                     c.buscarLibro(isbnLibroBuscar);
                     break;
                 case 4:
-                    System.out.println(" > Inserte un ISBN para eliminar: ");
+                    System.out.print(" > Inserte un ISBN para eliminar: ");
                     String isbnLibroEliminar = sc.nextLine();
                     c.eliminarLibro(isbnLibroEliminar);
                     break;
