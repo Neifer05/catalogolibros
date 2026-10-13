@@ -5,7 +5,7 @@ import models.Libro;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemoryController {
+public class MemoryController implements Controlador {
     private int id = 0;
     private final Map<String, Libro>listaLibros = new HashMap<>();
 
@@ -26,6 +26,10 @@ public class MemoryController {
     }
 
     public void mostrarLibros () {
+        if (listaLibros.isEmpty()) {
+            System.out.println("No hay ningún libro registrado en el catálogo.");
+        }
+
         listaLibros.forEach((clave, valor) -> {
             System.out.println(valor);
         });
@@ -34,6 +38,15 @@ public class MemoryController {
     public void buscarLibro (String isbn) {
         if (listaLibros.containsKey(isbn)) {
             System.out.println(listaLibros.get(isbn));
+        } else {
+            System.out.println("No se encontró ningún libro con ISBN: " + isbn);
+        }
+    }
+
+    public void eliminarLibro (String isbn) {
+        if (listaLibros.containsKey(isbn)) {
+            listaLibros.remove(isbn);
+            System.out.println("El libro \"" + isbn + "\" ha sido eliminado satisfactoriamente.");
         } else {
             System.out.println("No se encontró ningún libro con ISBN: " + isbn);
         }
