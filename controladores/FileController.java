@@ -1,9 +1,12 @@
 package controladores;
 
+import models.Libro;
+
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileController implements Controlador{
+public class FileController extends MemoryController {
     protected final File dataDirectory;
     protected final File dataFile;
     private MemoryController c;
@@ -20,19 +23,31 @@ public class FileController implements Controlador{
         try {
             if (!this.dataFile.exists()) {
                 this.dataFile.createNewFile();
+                FileWriter wr = new FileWriter(this.dataFile);
+                wr.write("ID;ISBN;TITULO;PRECIO;AUTOR;AÑOPUBLICACION");
+                wr.close();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        this.cargarLibros();
     }
 
     public void cargarLibros () {
-        c.getId()
 
     }
 
-    public void anadirLibro(String isbn, String titulo, float precio, String autor, int anopublicacion) {
+    public Libro anadirLibro(String isbn, String titulo, float precio, String autor, int anopublicacion) {
+        Libro l = super.anadirLibro(isbn, titulo, precio, autor, anopublicacion);
 
+        try {
+            FileWriter wr = new FileWriter(this.dataFile);
+            wr.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return l;
     }
 
     @Override

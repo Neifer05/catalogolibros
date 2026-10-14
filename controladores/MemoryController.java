@@ -19,10 +19,11 @@ public class MemoryController implements Controlador {
         listaLibros.put(l3.getIsbn(), l3);
     }
 
-    public void anadirLibro (String isbn, String titulo, float precio, String autor, int anopublicacion) {
+    public Libro anadirLibro (String isbn, String titulo, float precio, String autor, int anopublicacion) {
         id++;
         Libro l = new Libro(id, isbn, titulo, precio, autor, anopublicacion);
         listaLibros.put(l.getIsbn(), l);
+        return l;
     }
 
     public void mostrarLibros () {
@@ -54,5 +55,8 @@ public class MemoryController implements Controlador {
 
     public int getId() {
         return id;
+    }
+    public Map<String, Libro> getListaLibros() {
+        return listaLibros;
     }
 }
