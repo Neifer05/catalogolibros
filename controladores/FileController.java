@@ -52,16 +52,16 @@ public class FileController extends MemoryController {
 
     @Override
     public void mostrarLibros() {
-
+        super.mostrarLibros();
     }
 
     @Override
     public void buscarLibro(String isbn) {
-
+        super.buscarLibro(isbn);
     }
 
     @Override
     public void eliminarLibro(String isbn) {
-
+        super.eliminarLibro(isbn);
     }
 }
