@@ -7,9 +7,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        MemoryController c = new MemoryController();
+        FileController c = new FileController("data", new MemoryController());
         FormController fc = new FormController();
-        FileController flc = new FileController("data");
         Scanner sc = new Scanner(System.in);
         sc.useLocale(Locale.ENGLISH);
 
@@ -48,5 +47,6 @@ public class Main {
                     break;
             }
         }
+        sc.close();
     }
 }
