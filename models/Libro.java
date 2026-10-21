@@ -1,5 +1,7 @@
 package models;
 
+import excepciones.InvalidCampException;
+
 public class Libro {
     private int id;
     private String isbn;
@@ -29,7 +31,10 @@ public class Libro {
                 " }";
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(String isbn) throws InvalidCampException {
+        if (isbn.isEmpty() || isbn.equals(" ") || isbn.contains(";")) {
+            throw new InvalidCampException("El campo no puede estar vacío o contener caracteres especiales.");
+        }
         this.isbn = isbn;
     }
     public void setTitulo(String titulo) {

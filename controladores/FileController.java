@@ -73,6 +73,7 @@ public class FileController extends MemoryController {
             FileWriter wr = new FileWriter(this.dataFile, true);
             wr.write(l.getId() + ";"
                     + l.getIsbn() + ";"
+                    + l.getTitulo() + ";"
                     + l.getPrecio() + ";"
                     + l.getAutor() + ";"
                     + l.getAnopublicacion() + "\n");

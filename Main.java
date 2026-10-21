@@ -1,12 +1,12 @@
 import controladores.FileController;
 import controladores.FormController;
-import controladores.MemoryController;
+import excepciones.InvalidCampException;
 
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidCampException {
         FileController c = new FileController("data");
         FormController fc = new FormController();
         Scanner sc = new Scanner(System.in);
