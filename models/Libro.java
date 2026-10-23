@@ -34,10 +34,17 @@ public class Libro {
     public void setIsbn(String isbn) throws InvalidCampException {
         if (isbn.isEmpty() || isbn.equals(" ") || isbn.contains(";")) {
             throw new InvalidCampException("El campo no puede estar vacío o contener caracteres especiales.");
+        } else if (isbn.length() > 13) {
+            throw new InvalidCampException("La longitud del ISBN no puede sobrepasar los 13 caracteres.");
         }
         this.isbn = isbn;
     }
     public void setTitulo(String titulo) {
+        if (titulo.isEmpty() || titulo.equals(" ") || titulo.contains(";")) {
+            throw new InvalidCampException("El campo no puede estar vacío o contener caracteres especiales.");
+        } else if (titulo.length() > 30) {
+            throw new InvalidCampException("La longitud del título no puede sobrepasar los 13 caracteres.");
+        }
         this.titulo = titulo;
     }
     public void setPrecio(float precio) {
