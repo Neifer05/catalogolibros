@@ -30,7 +30,7 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    fc.formularioAnadirLibro(c, sc);
+                    fc.formularioAnadirLibro(c);
                     break;
                 case 2:
                     c.mostrarLibros();

@@ -51,6 +51,12 @@ public class Libro {
         this.precio = precio;
     }
     public void setAutor(String autor) {
+        if (autor.isEmpty() || autor.equals(" ") || autor.contains(";")) {
+            throw new InvalidCampException("El campo no puede estar vacío o contener caracteres especiales.");
+        } else if (autor.length() > 50) {
+            throw new InvalidCampException("La longitud del título no puede sobrepasar los 13 caracteres.");
+        }
+
         this.autor = autor;
     }
     public void setAnopublicacion(int anopublicacion) {
