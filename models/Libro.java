@@ -60,6 +60,9 @@ public class Libro {
         this.autor = autor;
     }
     public void setAnopublicacion(int anopublicacion) {
+        if (anopublicacion < 1900) {
+            throw new InvalidCampException("El año de publicación no puede ser menor a 1900.");
+        }
         this.anopublicacion = anopublicacion;
     }
 

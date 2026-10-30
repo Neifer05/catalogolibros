@@ -12,8 +12,8 @@ public class FileController extends MemoryController {
     protected final File dataDirectory;
     protected final File dataFile;
 
-    public FileController() {
-        this.dataDirectory = new File("data");
+    public FileController(String directory) {
+        this.dataDirectory = new File(directory);
         this.dataFile = new File(dataDirectory, "libros.txt");
 
         if (!this.dataDirectory.exists()) {
