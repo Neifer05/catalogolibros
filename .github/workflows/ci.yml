@@ -1,0 +1,57 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v7
+
+      - name: Configurar JDK 21
+        uses: actions/setup-java@v6
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Compilar el programa
+        run: |
+          mkdir -p out/main
+          javac -encoding UTF-8 -d out/main \
+            Main.java controladores/*.java excepciones/*.java models/*.java
+
+      - name: Descargar JUnit
+        run: |
+          curl -sSfLo junit.jar \
+            https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.4/junit-platform-console-standalone-1.11.4.jar
+
+      - name: Compilar y ejecutar pruebas
+        run: |
+          mkdir -p out/test
+          javac -encoding UTF-8 -cp "out/main:junit.jar" -d out/test \
+            test/models/*.java test/controladores/*.java
+          java -jar junit.jar execute \
+            --class-path "out/main:out/test" \
+            --scan-class-path out/test
+
+      - name: Prueba del programa
+        run: |
+          # 1ª: añadir un libro y salir
+          printf '1\n9780000000001\nLibroCI\n12.5\nAutorCI\n2000\n5\n' \
+            | java -cp out/main Main
+
+          # 2ª: listar libros y salir
+          printf '2\n5\n' | java -cp out/main Main | tee salida.txt
+
+          # Debe aparecer el libro guardado antes (persistencia en ./data)
+          grep -q "LibroCI" salida.txt
+          grep -q "Saliendo del cat" salida.txt
