@@ -28,14 +28,14 @@
           run: mvn -B verify
 
         - name: Prueba del programa
-          run:
-            # 1ª añadir un libro y salir
+          run: |
+            # 1ª: añadir un libro y salir
             printf '1\n9780000000001\nLibroCI\n12.5\nAutorCI\n2000\n5\n' \
-            | java -jar target/catalogolibros.jar
-            
-            # 2ª listar libros y salir
+              | java -jar target/catalogolibros.jar
+
+            # 2ª: listar libros y salir
             printf '2\n5\n' | java -jar target/catalogolibros.jar | tee salida.txt
-            
+
             # Debe aparecer el libro guardado antes (persistencia en ./data)
             grep -q "LibroCI" salida.txt
             grep -q "Saliendo del cat" salida.txt
