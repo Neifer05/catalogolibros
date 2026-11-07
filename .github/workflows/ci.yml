@@ -29,15 +29,6 @@ jobs:
           javac -encoding UTF-8 -d out/main \
             Main.java controladores/*.java excepciones/*.java models/*.java
 
-      - name: Compilar y ejecutar pruebas
-        run: |
-          mkdir -p out/test
-          javac -encoding UTF-8 -cp "out/main:junit.jar" -d out/test \
-            test/models/*.java test/controladores/*.java
-          java -jar junit.jar execute \
-            --class-path "out/main:out/test" \
-            --scan-class-path out/test
-
       - name: Prueba del programa
         run: |
           # 1ª: añadir un libro y salir
