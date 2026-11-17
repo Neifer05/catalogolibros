@@ -6,6 +6,19 @@ import models.Libro;
 import java.util.Scanner;
 
 public class FormController {
+    public void mostrarMenu () {
+        System.out.println(" == Catálogo de libros == ");
+        String[] menuopciones = {
+                "Añadir un nuevo libro.",
+                "Ver lista de todos los libros.",
+                "Buscar un libro por ISBN.",
+                "Eliminar un libro.",
+                "Guardar y salir."};
+        for (int i = 0; i < menuopciones.length; i++) {
+            System.out.println(i + 1 + ". " + menuopciones[i]);
+        }
+        System.out.print(" > Seleccione una opción: ");
+    }
     public void formularioAnadirLibro (FileController c, Scanner sc) throws InvalidCampException {
         Libro prototipo = new Libro(0, "ABCDEFG123", "Proto", 0.00f, "ProtoAutor", 1900);
 
