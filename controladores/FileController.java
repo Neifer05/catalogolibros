@@ -96,6 +96,10 @@ public class FileController extends MemoryController {
     public void buscarLibro(String isbn) {
         super.buscarLibro(isbn);
     }
+    @Override
+    public void modificarLibro (String isbn) {
+        super.modificarLibro(isbn);
+    }
 
     @Override
     public void eliminarLibro(String isbn) {

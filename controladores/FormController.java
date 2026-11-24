@@ -83,4 +83,6 @@ public class FormController {
 
         c.anadirLibro(prototipo.getIsbn(), prototipo.getTitulo(), prototipo.getPrecio(), prototipo.getGenero(), prototipo.getAutor(), prototipo.getAnopublicacion());
     }
+    public void modificacionLibro (Scanner sc) {
+    }
 }

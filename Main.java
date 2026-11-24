@@ -19,6 +19,7 @@ public class Main {
                         "Añadir un nuevo libro.",
                         "Ver lista de todos los libros.",
                         "Buscar un libro por ISBN.",
+                        "Modificar un libro existente",
                         "Eliminar un libro.",
                         "Guardar y salir."};
                 for (int i = 0; i < menuopciones.length; i++) {
@@ -26,6 +27,7 @@ public class Main {
                 }
                 System.out.print(" > Seleccione una opción: ");
                 int opcion = Integer.parseInt(sc.nextLine());
+                System.out.println();
                 if (opcion >= menuopciones.length || opcion < 1) { System.out.print("Saliendo del catálogo.."); break; }
 
                 switch (opcion) {
@@ -41,6 +43,11 @@ public class Main {
                         c.buscarLibro(isbnLibroBuscar);
                         break;
                     case 4:
+                        System.out.print(" > Inserte un ISBN para modificar: ");
+                        String isbnLibroUpdate = sc.nextLine();
+                        c.modificarLibro(isbnLibroUpdate);
+                        break;
+                    case 5:
                         System.out.print(" > Inserte un ISBN para eliminar: ");
                         String isbnLibroEliminar = sc.nextLine();
                         c.eliminarLibro(isbnLibroEliminar);

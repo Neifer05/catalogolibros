@@ -42,6 +42,32 @@ public class MemoryController implements Controlador {
         }
     }
 
+    public void modificarLibro (String isbn) {
+        if (listaLibros.containsKey(isbn)) {
+            Libro resguardo = new Libro(
+                    listaLibros.get(isbn).getId(),
+                    listaLibros.get(isbn).getIsbn(),
+                    listaLibros.get(isbn).getTitulo(),
+                    listaLibros.get(isbn).getPrecio(),
+                    listaLibros.get(isbn).getGenero(),
+                    listaLibros.get(isbn).getAutor(),
+                    listaLibros.get(isbn).getAnopublicacion());
+
+            System.out.println("Datos a modificar: \n" +
+                    " ISBN: " + resguardo.getIsbn() +
+                    "\n Titulo: " + resguardo.getTitulo() +
+                    "\n Precio: " + resguardo.getPrecio() +
+                    "\n Genero: " + resguardo.getGenero() +
+                    "\n Autor: " + resguardo.getTitulo() +
+                    "\n Año: " + resguardo.getTitulo() + "\n");
+
+            System.out.println("[1.ISBN, 2.Titulo, 3.Precio, 4.Genero, 5.Autor, 6.Año]");
+
+        } else {
+            System.out.println("No se encontró ningún libro con ISBN: " + isbn);
+        }
+    }
+
     public void eliminarLibro (String isbn) {
         if (listaLibros.containsKey(isbn)) {
             listaLibros.remove(isbn);
