@@ -32,7 +32,7 @@ jobs:
       - name: Prueba del programa
         run: |
           # 1ª: añadir un libro y salir
-          printf '1\n9780000000001\nLibroCI\n12.5\nNovelaCI\nAutorCI\n2000\n5\n' \
+          printf '1\n9780000000001\nLibroCI\n12.5\nNovelaCI\nAutorCI\n2000\n6\n' \
             | java -cp out/main Main
 
           # 2ª: listar libros y salir

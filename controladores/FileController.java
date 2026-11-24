@@ -61,7 +61,7 @@ public class FileController extends MemoryController {
                 }
 
             } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
+                System.out.println("El archivo no existe o está corrupto.");
             }
         }
     }
