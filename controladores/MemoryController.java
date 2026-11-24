@@ -10,18 +10,16 @@ public class MemoryController implements Controlador {
     private final Map<String, Libro>listaLibros = new HashMap<>();
 
     public void anadirLibroTest () {
-        Libro l = new Libro(1, "151081805", "Libro1", 10.00F, "Neifer", 1900);
-        Libro l2 = new Libro(2, "215081805", "Libro2", 20.00F, "Neifer", 1900);
-        Libro l3 = new Libro(3, "521181805", "Libro3", 9.99F, "Neifer", 1900);
+        Libro l = new Libro(1, "151081805", "Libro1", 10.00F, "Novela", "Neifer", 1900);
+        Libro l2 = new Libro(2, "215081805", "Libro2", 20.00F, "Ciencia ficcion", "Neifer", 1900);
 
         listaLibros.put(l.getIsbn(), l);
         listaLibros.put(l2.getIsbn(), l2);
-        listaLibros.put(l3.getIsbn(), l3);
     }
 
-    public Libro anadirLibro (String isbn, String titulo, float precio, String autor, int anopublicacion) {
+    public Libro anadirLibro (String isbn, String titulo, float precio, String genero, String autor, int anopublicacion) {
         id++;
-        Libro l = new Libro(id, isbn, titulo, precio, autor, anopublicacion);
+        Libro l = new Libro(id, isbn, titulo, precio, genero, autor, anopublicacion);
         listaLibros.put(l.getIsbn(), l);
         return l;
     }

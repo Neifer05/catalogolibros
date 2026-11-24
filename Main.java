@@ -2,6 +2,7 @@ import controladores.FileController;
 import controladores.FormController;
 import excepciones.InvalidCampException;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -13,9 +14,19 @@ public class Main {
         try (Scanner sc = new Scanner(System.in)){
             sc.useLocale(Locale.ENGLISH);
             while (true) {
-                fc.mostrarMenu();
+                System.out.println(" == Catálogo de libros == ");
+                String[] menuopciones = {
+                        "Añadir un nuevo libro.",
+                        "Ver lista de todos los libros.",
+                        "Buscar un libro por ISBN.",
+                        "Eliminar un libro.",
+                        "Guardar y salir."};
+                for (int i = 0; i < menuopciones.length; i++) {
+                    System.out.println(i + 1 + ". " + menuopciones[i]);
+                }
+                System.out.print(" > Seleccione una opción: ");
                 int opcion = Integer.parseInt(sc.nextLine());
-                if (opcion >= 5 || opcion < 1) { System.out.print("Saliendo del catálogo.."); break; }
+                if (opcion >= menuopciones.length || opcion < 1) { System.out.print("Saliendo del catálogo.."); break; }
 
                 switch (opcion) {
                     case 1:
@@ -36,6 +47,8 @@ public class Main {
                         break;
                 }
             }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

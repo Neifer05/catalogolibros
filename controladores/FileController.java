@@ -24,7 +24,7 @@ public class FileController extends MemoryController {
             if (!this.dataFile.exists()) {
                 this.dataFile.createNewFile();
                 FileWriter wr = new FileWriter(this.dataFile);
-                wr.write("ID;ISBN;TITULO;PRECIO;AUTOR;AÑOPUBLICACION\n");
+                wr.write("ID;ISBN;TITULO;PRECIO;GENERO;AUTOR;AÑOPUBLICACION\n");
                 wr.close();
             }
         } catch (IOException e) {
@@ -52,11 +52,12 @@ public class FileController extends MemoryController {
                     String isbn = datos[1];
                     String titulo = datos[2];
                     float precio = Float.parseFloat(datos[3]);
-                    String autor = datos[4];
-                    int anopubli = Integer.parseInt(datos[5]);
+                    String genero = datos[4];
+                    String autor = datos[5];
+                    int anopubli = Integer.parseInt(datos[6]);
 
-                    Libro l = new Libro(id, isbn, titulo, precio, autor, anopubli);
-                    super.anadirLibro(l.getIsbn(), l.getTitulo(), l.getPrecio(), l.getAutor(), l.getAnopublicacion());
+                    Libro l = new Libro(id, isbn, titulo, precio, genero, autor, anopubli);
+                    super.anadirLibro(l.getIsbn(), l.getTitulo(), l.getPrecio(), l.getGenero(), l.getAutor(), l.getAnopublicacion());
                 }
 
             } catch (FileNotFoundException e) {
@@ -65,8 +66,8 @@ public class FileController extends MemoryController {
         }
     }
 
-    public Libro anadirLibro(String isbn, String titulo, float precio, String autor, int anopublicacion) {
-        Libro l = super.anadirLibro(isbn, titulo, precio, autor, anopublicacion);
+    public Libro anadirLibro(String isbn, String titulo, float precio, String genero, String autor, int anopublicacion) {
+        Libro l = super.anadirLibro(isbn, titulo, precio, genero, autor, anopublicacion);
 
         try {
             // parámetro 'true' activa el modo de escritura incremental
@@ -75,6 +76,7 @@ public class FileController extends MemoryController {
                     + l.getIsbn() + ";"
                     + l.getTitulo() + ";"
                     + l.getPrecio() + ";"
+                    + l.getGenero() + ";"
                     + l.getAutor() + ";"
                     + l.getAnopublicacion() + "\n");
             wr.close();
