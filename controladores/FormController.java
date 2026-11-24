@@ -6,6 +6,12 @@ import models.Libro;
 import java.util.Scanner;
 
 public class FormController {
+    private Scanner sc;
+
+    public FormController() {
+        this.sc = new Scanner(System.in);
+    }
+
     public void formularioAnadirLibro (FileController c, Scanner sc) throws InvalidCampException {
         Libro prototipo = new Libro(0, "ABCDEFG123", "Proto", 0.00f, "ProtoGene", "ProtoAutor", 1900);
 
@@ -83,6 +89,7 @@ public class FormController {
 
         c.anadirLibro(prototipo.getIsbn(), prototipo.getTitulo(), prototipo.getPrecio(), prototipo.getGenero(), prototipo.getAutor(), prototipo.getAnopublicacion());
     }
-    public void modificacionLibro (Scanner sc) {
+    public int opcionElegir () {
+        return sc.nextInt();
     }
 }

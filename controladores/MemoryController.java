@@ -7,7 +7,12 @@ import java.util.Map;
 
 public class MemoryController implements Controlador {
     private int id = 0;
+    private FormController fc;
     private final Map<String, Libro>listaLibros = new HashMap<>();
+
+    public MemoryController() {
+        this.fc = new FormController();
+    }
 
     public void anadirLibroTest () {
         Libro l = new Libro(1, "151081805", "Libro1", 10.00F, "Novela", "Neifer", 1900);
@@ -62,7 +67,7 @@ public class MemoryController implements Controlador {
                     "\n Año: " + resguardo.getTitulo() + "\n");
 
             System.out.println("[1.ISBN, 2.Titulo, 3.Precio, 4.Genero, 5.Autor, 6.Año]");
-
+            fc.opcionElegir();
         } else {
             System.out.println("No se encontró ningún libro con ISBN: " + isbn);
         }

@@ -36,7 +36,7 @@ jobs:
             | java -cp out/main Main
 
           # 2ª: listar libros y salir
-          printf '2\n5\n' | java -cp out/main Main | tee salida.txt
+          printf '2\n6\n' | java -cp out/main Main | tee salida.txt
 
           # Debe aparecer el libro guardado antes (persistencia en ./data)
           grep -q "LibroCI" salida.txt
